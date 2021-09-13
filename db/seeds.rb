@@ -13,3 +13,9 @@ Category.create!(name: 'Whiskey', img_url: 'https://cdn.britannica.com/71/192771
 Category.create!(name: 'Brandy', img_url: 'https://cf.ltkcdn.net/cocktails/images/orig/267128-2121x1414-brandy-and-fire.jpg')
 
 puts "Alcohol Category seeded"
+
+Brand.create!(name: 'Bud Light', img_url: 'https://wikiliq.org/wp-content/uploads/2021/02/Bud-Light.jpeg', quantity:200, price: 26.99, category_id: 1) 
+Brand.create!(name: 'Heineken', img_url: 'https://wikiliq.org/wp-content/uploads/2021/02/Heineken-Lager.jpeg', quantity:200, price: 17.99, category_id: 1)
+Brand.create!(name: 'Corona Light', img_url: 'https://wikiliq.org/wp-content/uploads/2021/02/Corona-Light.jpeg', quantity:200, price: 17.99, category_id: 1)
+
+puts "Beer brand seeded"
