@@ -1,5 +1,6 @@
 class BrandsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :brand_not_found
+  rescue_from ActiveRecord::RecordInvalid, with: :render_incorrect_attributes
 
     def index
         brands = Brand.all
@@ -8,31 +9,25 @@ class BrandsController < ApplicationController
 
       def create
           brand = Brand.create(brand_params)
-          render json: brand
+          render json: brand, status: :created
+
       end
 
       def show
         brand = find_brand
         render json: brand
-
-      
       end
 
       def updated
         brand = find_brand
         brand.update(brand_params)
         render json: brand
-
-      
-
       end
 
       def destroy
         brand = find_brand
-        user.destroy
+        brand.destroy
         head :no_content
-
-      
       end
 
       private
@@ -47,5 +42,9 @@ class BrandsController < ApplicationController
 
       def brand_not_found
         render json: {error: "brand not found"}, status: :not_found
+      end
+
+      def render_incorrect_attributes(invalid)
+        render json: { error: invalid.record.errors }, status: :incorrect_attributes
       end
 end
