@@ -4,7 +4,7 @@ class BrandsController < ApplicationController
 
     def index
         brands = Brand.all
-        render json: brands 
+        render json: brands, only: [:name, :img_url, :price]
       end
 
       def create
@@ -15,7 +15,7 @@ class BrandsController < ApplicationController
 
       def show
         brand = find_brand
-        render json: brand
+        render json: brand, only: [:name, :img_url, :price]
       end
 
       def updated
