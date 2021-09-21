@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
     # GET /categories
   def index
     categories = Category.all
-    render json: categories, only: [:name, :img_url]
+    # render json: categories, only: [:name, :img_url]
+    render json: categories
   end
 
   def create
@@ -15,7 +16,8 @@ end
 
   def show
     category = find_category
-    render json: category, only: [:name, :img_url, :price]
+    # render json: category, only: [:name, :img_url]
+    render json: category
    end
 
   def updated
@@ -33,7 +35,7 @@ end
 private
 
   def category_params
-    params.require(:category).permit(:name, :img_url, :quantity, :price, :category_id)
+    params.require(:category).permit(:name, :img_url, :category_id)
   end
 
   def find_category
