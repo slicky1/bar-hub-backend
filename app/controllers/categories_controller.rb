@@ -20,7 +20,7 @@ end
     render json: category
    end
 
-  def updated
+  def update
    category = find_category
    category.update(category_params)
   render json: category

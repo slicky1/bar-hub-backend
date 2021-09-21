@@ -20,7 +20,7 @@ class BrandsController < ApplicationController
         # render json: brand
       end
 
-      def updated
+      def update
         brand = find_brand
         brand.update(brand_params)
         render json: brand
